@@ -12,7 +12,7 @@ public class Pilha<T> {
 		topo = sentinela;
 	}
 	
-	private boolean pilhaVazia() {
+	public boolean pilhaVazia() {
 		
 		if (fundo == topo)
 			return true;

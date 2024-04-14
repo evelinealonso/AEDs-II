@@ -9,7 +9,7 @@ public class Pilha<E> {
 		topo = 0;
 	}
 	
-	private boolean pilhaVazia() {
+	public boolean pilhaVazia() {
 		
 		if (topo == 0)
 			return true;
