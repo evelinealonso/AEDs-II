@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 
 public class Pilha<E> {
 
@@ -19,10 +20,10 @@ public class Pilha<E> {
 		return topo == pilha.length;
 	}
 
-	public void empilhar(E item) throws Exception {
+	public void empilhar(E item) {
 
 		if (pilhaCheia()) {
-			throw new Exception("Nao foi possivel empilhar "
+			throw new IllegalStateException("Nao foi possivel empilhar "
 					+ "o item: a pilha está cheia!");
 		}
 
@@ -31,10 +32,10 @@ public class Pilha<E> {
 
 	}
 
-	public E desempilhar() throws Exception {
+	public E desempilhar() {
 
 		if (pilhaVazia()) {
-			throw new Exception("Nao foi possivel desempilhar "
+			throw new NoSuchElementException("Nao foi possivel desempilhar "
 					+ "o item: a pilha está vazia!");
 		}
 
@@ -43,10 +44,10 @@ public class Pilha<E> {
 
 	}
 
-	public E consultarTopo() throws Exception {
+	public E consultarTopo() {
 
 		if (pilhaVazia()) {
-			throw new Exception("Nao há nenhum item na pilha!");
+			throw new NoSuchElementException("Nao há nenhum item na pilha!");
 		}
 
 		return pilha[topo - 1];
