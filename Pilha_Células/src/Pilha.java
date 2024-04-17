@@ -26,7 +26,7 @@ public class Pilha<T> {
 
 	}
 
-	public T desempilhar() throws Exception {
+	public T desempilhar() {
 
 		if (pilhaVazia()) {
 			throw new NoSuchElementException("Nao foi possível desempilhar "
@@ -39,7 +39,7 @@ public class Pilha<T> {
 
 	}
 
-	public T consultarTopo() throws Exception {
+	public T consultarTopo() {
 
 		if (pilhaVazia()) {
 			throw new NoSuchElementException("Nao há nenhum item na pilha!");
