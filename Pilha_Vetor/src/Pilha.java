@@ -1,4 +1,3 @@
-import java.util.ArrayDeque;
 
 public class Pilha<E> {
 
