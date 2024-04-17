@@ -7,11 +7,10 @@ public class Pilha<T> {
 
 	public Pilha() {
 
-		Celula<T> sentinela;
-
-		sentinela = new Celula<T>();
+		Celula<T> sentinela = new Celula<T>();
 		fundo = sentinela;
 		topo = sentinela;
+
 	}
 
 	public boolean pilhaVazia() {
