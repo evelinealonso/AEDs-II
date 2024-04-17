@@ -1,55 +1,57 @@
+import java.util.ArrayDeque;
+
 public class Pilha<E> {
 
 	private E[] pilha;
 	private int topo;
 
 	public Pilha(int tamanho) {
-		
+
 		pilha = (E[]) new Object[tamanho];
 		topo = 0;
+
 	}
-	
+
 	public boolean pilhaVazia() {
-		
-		if (topo == 0)
-			return true;
-		else
-			return false;
+		return topo == 0;
 	}
-	
+
 	private boolean pilhaCheia() {
-		
-		if (topo == pilha.length)
-			return true;
-		else
-			return false;
+		return topo == pilha.length;
 	}
-	
-	public void empilhar(E item) throws Exception{
-		
-		if (! pilhaCheia()) {
-			pilha[topo] = item;
-			topo++;
-		} else
+
+	public void empilhar(E item) throws Exception {
+
+		if (pilhaCheia()) {
 			throw new Exception("Nao foi possivel empilhar "
 					+ "o item: a pilha está cheia!");
+		}
+
+		pilha[topo] = item;
+		topo++;
+
 	}
-	
+
 	public E desempilhar() throws Exception {
-		
-		if (! pilhaVazia()) {
-			topo--;
-			return pilha[topo];
-		} else
+
+		if (pilhaVazia()) {
 			throw new Exception("Nao foi possivel desempilhar "
 					+ "o item: a pilha está vazia!");
+		}
+
+		topo--;
+		return pilha[topo];
+
 	}
 
 	public E consultarTopo() throws Exception {
-		
-		if (! pilhaVazia()) {
-			return pilha[topo-1];
-		} else
+
+		if (pilhaVazia()) {
 			throw new Exception("Nao há nenhum item na pilha!");
+		}
+
+		return pilha[topo - 1];
+
 	}
+
 }
