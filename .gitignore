@@ -23,3 +23,6 @@
 hs_err_pid*
 replay_pid*
 /.metadata/
+
+# Mac OSX files
+.DS_Store

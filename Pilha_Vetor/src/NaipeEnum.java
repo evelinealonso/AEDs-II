@@ -1,3 +1,3 @@
 public enum NaipeEnum {
-	COPAS, OUROS, ESPADA, PAUS;
+	COPAS, OUROS, ESPADAS, PAUS;
 }

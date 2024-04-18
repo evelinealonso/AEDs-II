@@ -1,55 +1,57 @@
+import java.util.NoSuchElementException;
+
 public class Pilha<E> {
 
 	private E[] pilha;
 	private int topo;
 
 	public Pilha(int tamanho) {
-		
+
 		pilha = (E[]) new Object[tamanho];
 		topo = 0;
-	}
-	
-	public boolean pilhaVazia() {
-		
-		if (topo == 0)
-			return true;
-		else
-			return false;
-	}
-	
-	private boolean pilhaCheia() {
-		
-		if (topo == pilha.length)
-			return true;
-		else
-			return false;
-	}
-	
-	public void empilhar(E item) throws Exception{
-		
-		if (! pilhaCheia()) {
-			pilha[topo] = item;
-			topo++;
-		} else
-			throw new Exception("Nao foi possivel empilhar "
-					+ "o item: a pilha está cheia!");
-	}
-	
-	public E desempilhar() throws Exception {
-		
-		if (! pilhaVazia()) {
-			topo--;
-			return pilha[topo];
-		} else
-			throw new Exception("Nao foi possivel desempilhar "
-					+ "o item: a pilha está vazia!");
+
 	}
 
-	public E consultarTopo() throws Exception {
-		
-		if (! pilhaVazia()) {
-			return pilha[topo-1];
-		} else
-			throw new Exception("Nao há nenhum item na pilha!");
+	public boolean pilhaVazia() {
+		return topo == 0;
 	}
+
+	private boolean pilhaCheia() {
+		return topo == pilha.length;
+	}
+
+	public void empilhar(E item) {
+
+		if (pilhaCheia()) {
+			throw new IllegalStateException("Nao foi possivel empilhar "
+					+ "o item: a pilha está cheia!");
+		}
+
+		pilha[topo] = item;
+		topo++;
+
+	}
+
+	public E desempilhar() {
+
+		if (pilhaVazia()) {
+			throw new NoSuchElementException("Nao foi possivel desempilhar "
+					+ "o item: a pilha está vazia!");
+		}
+
+		topo--;
+		return pilha[topo];
+
+	}
+
+	public E consultarTopo() {
+
+		if (pilhaVazia()) {
+			throw new NoSuchElementException("Nao há nenhum item na pilha!");
+		}
+
+		return pilha[topo - 1];
+
+	}
+
 }

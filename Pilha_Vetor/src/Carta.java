@@ -1,52 +1,43 @@
 public class Carta {
 
-	private String naipe;
-	private String valor;
-	
-	public Carta(String naipe, String valor) throws Exception {
-		
+	private NaipeEnum naipe;
+	private ValorCartaEnum valor;
+
+	public Carta(NaipeEnum naipe, ValorCartaEnum valor) {
 		setNaipe(naipe);
-		setValor(valor);	
+		setValor(valor);
 	}
 
-	public String getNaipe() {
+	public Carta(String naipe, String valor) {
+
+		try {
+			setNaipe(NaipeEnum.valueOf(naipe));
+		} catch (IllegalArgumentException e) {
+			throw new IllegalArgumentException("O naipe informado não é válido: " + naipe);
+		}
+
+		try {
+			setValor(ValorCartaEnum.valueOf(valor));
+		} catch (IllegalArgumentException e) {
+			throw new IllegalArgumentException("O valor informado não é válido: " + valor);
+		}
+
+	}
+
+	public NaipeEnum getNaipe() {
 		return naipe;
 	}
 
-	public void setNaipe(String naipe) throws Exception{
-		
-		Boolean ehValido = false;
-		
-		for (NaipeEnum naipeOpcoes: NaipeEnum.values()) {
-			if (naipe.equals(naipeOpcoes.toString())) {
-				this.naipe = naipe;
-				ehValido = true;
-				break;
-			}
-		}
-		
-		if (! ehValido)
-			throw new Exception("O naipe informado é inválido!");
+	public void setNaipe(NaipeEnum naipe) {
+		this.naipe = naipe;
 	}
 
-	public String getValor() {
+	public ValorCartaEnum getValor() {
 		return valor;
 	}
 
-	public void setValor(String valor) throws Exception {
-		
-		Boolean ehValido = false;
-		
-		for (ValorCartaEnum valorOpcoes: ValorCartaEnum.values()) {
-			if (valor.equals(valorOpcoes.toString())) {
-				this.valor = valor;
-				ehValido = true;
-				break;
-			}
-		}
-		
-		if (! ehValido)
-			throw new Exception("O valor informado para a carta é inválido!");
-
+	public void setValor(ValorCartaEnum valor) {
+		this.valor = valor;
 	}
+
 }
