@@ -14,12 +14,7 @@ public class Pilha<E> {
 
 	public E desempilhar() {
 
-		if (pilhaVazia()) {
-			throw new NoSuchElementException("Nao foi possível desempilhar "
-					+ "o item: a pilha está vazia!");
-		}
-
-		E desempilhado = topo.getItem();
+		E desempilhado = consultarTopo();
 		topo = topo.getProximo();
 		return desempilhado;
 
