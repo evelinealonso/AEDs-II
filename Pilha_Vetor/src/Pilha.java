@@ -2,7 +2,7 @@ import java.util.NoSuchElementException;
 
 public class Pilha<E> {
 
-	private E[] pilha;
+	private final E[] pilha;
 	private int topo;
 
 	public Pilha(int tamanho) {
