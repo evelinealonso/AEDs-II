@@ -1,30 +1,19 @@
 public class Celula<T> {
 
-	private T item;
-	private Celula<T> proximo;
+    private final T item;
+    private final Celula<T> proximo;
 
-	public Celula() {
-		this(null);
-	}
+    public Celula(T item, Celula<T> proximo) {
+        this.item = item;
+        this.proximo = proximo;
+    }
 
-	public Celula(T item) {
-		setItem(item);
-		setProximo(null);
-	}
+    public T getItem() {
+        return item;
+    }
 
-	public T getItem() {
-		return item;
-	}
+    public Celula<T> getProximo() {
+        return proximo;
+    }
 
-	public void setItem(T item) {
-		this.item = item;
-	}
-
-	public Celula<T> getProximo() {
-		return proximo;
-	}
-
-	public void setProximo(Celula<T> proximo) {
-		this.proximo = proximo;
-	}
 }

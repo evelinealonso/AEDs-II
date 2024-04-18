@@ -2,27 +2,14 @@ import java.util.NoSuchElementException;
 
 public class Pilha<E> {
 
-	private Celula<E> topo;
-	private Celula<E> fundo;
-
-	public Pilha() {
-
-		Celula<E> sentinela = new Celula<E>();
-		fundo = sentinela;
-		topo = sentinela;
-
-	}
+	private Celula<E> topo = null;
 
 	public boolean pilhaVazia() {
-		return fundo == topo;
+		return topo == null;
 	}
 
 	public void empilhar(E item) {
-
-		Celula<E> novaCelula = new Celula<E>(item);
-		novaCelula.setProximo(topo);
-		topo = novaCelula;
-
+		topo = new Celula<E>(item, topo);
 	}
 
 	public E desempilhar() {
