@@ -3,7 +3,7 @@ import java.util.NoSuchElementException;
 public class Pilha<E> {
 
 	private Celula<E> topo;
-	private Celula<E> fundo;
+	private final Celula<E> fundo;
 
 	public Pilha() {
 
@@ -19,20 +19,12 @@ public class Pilha<E> {
 
 	public void empilhar(E item) {
 
-		Celula<E> novaCelula = new Celula<E>(item);
-		novaCelula.setProximo(topo);
-		topo = novaCelula;
-
+		topo = new Celula<E>(item, topo);
 	}
 
 	public E desempilhar() {
 
-		if (pilhaVazia()) {
-			throw new NoSuchElementException("Nao foi possível desempilhar "
-					+ "o item: a pilha está vazia!");
-		}
-
-		E desempilhado = topo.getItem();
+		E desempilhado = consultarTopo();
 		topo = topo.getProximo();
 		return desempilhado;
 
@@ -42,7 +34,6 @@ public class Pilha<E> {
 
 		if (pilhaVazia()) {
 			throw new NoSuchElementException("Nao há nenhum item na pilha!");
-
 		}
 
 		return topo.getItem();
