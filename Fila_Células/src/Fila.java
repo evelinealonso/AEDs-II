@@ -2,7 +2,7 @@ import java.util.NoSuchElementException;
 
 public class Fila<E> {
 
-	private final Celula<E> frente;
+	private Celula<E> frente;
 	private Celula<E> tras;
 	
 	Fila() {
