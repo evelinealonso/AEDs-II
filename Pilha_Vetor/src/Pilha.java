@@ -12,17 +12,17 @@ public class Pilha<E> {
 
 	}
 
-	public boolean pilhaVazia() {
+	public boolean vazia() {
 		return topo == 0;
 	}
 
-	private boolean pilhaCheia() {
+	private boolean cheia() {
 		return topo == pilha.length;
 	}
 
 	public void empilhar(E item) {
 
-		if (pilhaCheia()) {
+		if (cheia()) {
 			throw new IllegalStateException("Nao foi possivel empilhar "
 					+ "o item: a pilha está cheia!");
 		}
@@ -34,19 +34,16 @@ public class Pilha<E> {
 
 	public E desempilhar() {
 
-		if (pilhaVazia()) {
-			throw new NoSuchElementException("Nao foi possivel desempilhar "
-					+ "o item: a pilha está vazia!");
-		}
-
+		E item = consultarTopo();
 		topo--;
-		return pilha[topo];
+		
+		return item;
 
 	}
 
 	public E consultarTopo() {
 
-		if (pilhaVazia()) {
+		if (vazia()) {
 			throw new NoSuchElementException("Nao há nenhum item na pilha!");
 		}
 

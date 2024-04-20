@@ -13,7 +13,7 @@ public class Pilha<E> {
 
 	}
 
-	public boolean pilhaVazia() {
+	public boolean vazia() {
 		return fundo == topo;
 	}
 
@@ -32,7 +32,7 @@ public class Pilha<E> {
 
 	public E consultarTopo() {
 
-		if (pilhaVazia()) {
+		if (vazia()) {
 			throw new NoSuchElementException("Nao há nenhum item na pilha!");
 		}
 

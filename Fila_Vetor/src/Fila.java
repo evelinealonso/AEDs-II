@@ -34,15 +34,20 @@ public class Fila<E> {
 	
 	public E desenfileirar() {
 		
-		E item = null;
-		
-		if (vazia()) {
-			throw new NoSuchElementException ("Erro ao tentar desenfileirar um item. "
-					+ "A fila está vazia!");
-		}
-		item = fila[frente % fila.length];
+		E item = consultarPrimeiro();
 		frente++;
 			
 		return item;
 	}
+	
+	public E consultarPrimeiro() {
+
+		if (vazia()) {
+			throw new NoSuchElementException("Nao há nenhum item na pilha!");
+		}
+
+		return fila[frente % fila.length];
+
+	}
+
 }
