@@ -3,7 +3,7 @@ import java.util.NoSuchElementException;
 public class Pilha<E> {
 
 	private Celula<E> topo;
-	private final Celula<E> fundo;
+	private Celula<E> fundo;
 
 	public Pilha() {
 
