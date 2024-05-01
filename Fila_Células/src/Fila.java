@@ -7,9 +7,7 @@ public class Fila<E> {
 	
 	Fila() {
 		
-		Celula<E> sentinela;
-		
-		sentinela = new Celula<E>();
+		Celula<E> sentinela = new Celula<E>();
 		frente = tras = sentinela;
 	}
 	
@@ -29,16 +27,17 @@ public class Fila<E> {
 	public E desenfileirar() {
 		
 		E item = null;
-		Celula<E> aux;
+		Celula<E> primeiro;
 		
 		item = consultarPrimeiro();
 		
-		aux = frente.getProximo();
-		frente.setProximo(aux.getProximo());
+		primeiro = frente.getProximo();
+		frente.setProximo(primeiro.getProximo());
 		
-		aux.setProximo(null);
+		primeiro.setProximo(null);
 			
-		if (aux == tras)
+		// Caso o item desenfileirado seja também o último da fila.
+		if (primeiro == tras)
 			tras = frente;
 		
 		return item;
