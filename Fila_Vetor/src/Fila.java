@@ -14,12 +14,17 @@ public class Fila<E> {
 	
 	public boolean cheia() {
 		
-		return (((tras + 1) % fila.length) == (frente % fila.length));
+		return (obterIndice(tras + 1)  == obterIndice(frente));
 	}
 	
 	public boolean vazia() {
 		
 		return (frente == tras);
+	}
+	
+	private int obterIndice (int valor) {
+	
+		return (valor % fila.length);
 	}
 	
 	public void enfileirar(E item) {
@@ -28,7 +33,7 @@ public class Fila<E> {
 			throw new IllegalStateException ("Erro ao tentar enfileirar um item. "
 					+ "A fila está cheia!");
 		}
-		fila[tras % fila.length] = item;
+		fila[obterIndice(tras)] = item;
 		tras++;	
 	}
 	
@@ -46,7 +51,7 @@ public class Fila<E> {
 			throw new NoSuchElementException("Nao há nenhum item na pilha!");
 		}
 
-		return fila[frente % fila.length];
+		return fila[obterIndice(frente)];
 
 	}
 
