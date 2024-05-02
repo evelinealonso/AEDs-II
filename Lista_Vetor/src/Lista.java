@@ -1,0 +1,68 @@
+public class Lista<E> {
+
+	private E[] lista;
+	private int primeiro;
+	private int ultimo;
+	
+	public Lista(int tamanho) {
+		
+		lista = (E[]) new Object[tamanho];
+		this.primeiro = 0;
+		this.ultimo = 0;
+	}
+	
+	public boolean listaVazia() {
+		
+		return (this.primeiro == this.ultimo);
+	}
+	
+	public boolean listaCheia() {
+		
+		return (this.ultimo == lista.length); 
+	}
+	
+	public void inserir(E novo, int posicao) {
+		
+		if (listaCheia())
+			throw new IllegalStateException("Não foi possível inserir o item na lista: "
+					+ "a lista está cheia!");
+
+		if ((posicao < 0) || (posicao > this.ultimo)) 
+			throw new IndexOutOfBoundsException ("Não foi possível inserir o item na lista: "
+					+ "a posição informada é inválida!");
+		
+		for (int i = this.ultimo; i > posicao; i--)
+			lista[i] = lista[i-1];
+				
+		lista[posicao] = novo;
+				
+		this.ultimo++;
+	}
+	
+	public E remover(int posicao) {
+		
+		E removido;
+		
+		if (listaVazia())
+			throw new IllegalStateException("Não foi possível remover o item na lista: "
+					+ "a lista está vazia!");
+
+		if ((posicao < 0) || (posicao >= this.ultimo))
+			throw new IndexOutOfBoundsException ("Não foi possível remover o item na lista: "
+					+ "a posição informada é inválida!");
+			
+		removido = lista[posicao];
+		ultimo--;
+				
+		for (int i = posicao; i < this.ultimo; i++)
+			lista[i] = lista[i+1];
+				
+		return removido;
+	}
+	
+	public void imprimir() {
+		
+		for (int i = 0; i < ultimo; i++)
+			System.out.println(lista[i].toString());
+	}
+}
