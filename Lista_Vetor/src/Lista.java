@@ -59,10 +59,4 @@ public class Lista<E> {
 				
 		return removido;
 	}
-	
-	public void imprimir() {
-		
-		for (int i = 0; i < ultimo; i++)
-			System.out.println(lista[i].toString());
-	}
 }
