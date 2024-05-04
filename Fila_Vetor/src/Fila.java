@@ -54,5 +54,18 @@ public class Fila<E> {
 		return fila[obterIndice(frente)];
 
 	}
+	
+	public void imprimir() {
+		
+		int posicao;
+		
+		if (vazia())
+			System.out.println("A fila está vazia!");
+		else 
+			for (int i = this.frente; i < this.tras; i++) {
+				posicao = obterIndice(i);
+				System.out.println(fila[posicao]);
+			}
+	}
 
 }

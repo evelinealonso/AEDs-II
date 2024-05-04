@@ -19,5 +19,8 @@ public class Aplicacao {
 
         cli = filaLanchonete.desenfileirar();
         System.out.println("O cliente " + cli.getNome() + " foi atendido."); // John
+        
+        System.out.println("Itens na fila:");
+        filaLanchonete.imprimir();  // Charles - Mary
 	}
 }
