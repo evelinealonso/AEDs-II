@@ -12,7 +12,7 @@ public class Lista<E> {
 		this.tamanho = 0;
 	}
 	
-	public boolean listaVazia() {
+	public boolean vazia() {
 		
 		return (this.primeiro == this.ultimo);
 	}
@@ -46,7 +46,7 @@ public class Lista<E> {
 		
 		Celula<E> anterior, celulaRemovida, proximaCelula;
 		
-		if (listaVazia())
+		if (vazia())
 			throw new IllegalStateException("Não foi possível remover o item da lista: "
 					+ "a lista está vazia!");
 		

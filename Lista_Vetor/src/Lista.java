@@ -11,19 +11,19 @@ public class Lista<E> {
 		this.ultimo = 0;
 	}
 	
-	public boolean listaVazia() {
+	public boolean vazia() {
 		
 		return (this.primeiro == this.ultimo);
 	}
 	
-	public boolean listaCheia() {
+	public boolean cheia() {
 		
 		return (this.ultimo == lista.length); 
 	}
 	
 	public void inserir(E novo, int posicao) {
 		
-		if (listaCheia())
+		if (cheia())
 			throw new IllegalStateException("Não foi possível inserir o item na lista: "
 					+ "a lista está cheia!");
 
@@ -43,7 +43,7 @@ public class Lista<E> {
 		
 		E removido;
 		
-		if (listaVazia())
+		if (vazia())
 			throw new IllegalStateException("Não foi possível remover o item da lista: "
 					+ "a lista está vazia!");
 

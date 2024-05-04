@@ -67,5 +67,4 @@ public class Fila<E> {
 				System.out.println(fila[posicao]);
 			}
 	}
-
 }
