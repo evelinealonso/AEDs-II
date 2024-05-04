@@ -34,4 +34,9 @@ public class Cliente {
 		this.horarioChegada = horarioChegada;
 	}
 	
+	public String toString() {
+		return ("Código: " + this.codigo + " Nome: " + this.nome + 
+				" Horário de chegada: " + this.horarioChegada);
+		
+	}
 }

@@ -52,4 +52,19 @@ public class Fila<E> {
 		return frente.getProximo().getItem();
 
 	}
+	
+	public void imprimir() {
+		
+		Celula<E> aux;
+		
+		if (vazia())
+			System.out.println("A fila está vazia!");
+		else {
+			aux = this.frente.getProximo();
+			while (aux != null) {
+				System.out.println(aux.getItem());
+				aux = aux.getProximo();
+			}
+		} 	
+	}
 }
