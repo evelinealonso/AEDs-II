@@ -19,8 +19,12 @@ public class Aplicacao {
 	    lista.inserir(cc, 2);
 	    
 	    cc = lista.remover(1);
+	    System.out.println("Conta-corrente removida:");
+	    System.out.println(cc.toString()); // John
 	    
 	    cc = lista.remover(1);
+	    System.out.println("Conta-corrente removida:");
+	    System.out.println(cc.toString()); // Mary
 	}
 
 }

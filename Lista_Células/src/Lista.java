@@ -39,8 +39,7 @@ public class Lista<E> {
 		if (posicao == this.tamanho)  // a inserção ocorreu na última posição da lista
 			this.ultimo = novaCelula;
 			
-		this.tamanho++;
-			
+		this.tamanho++;		
 	}
 	
 	public E remover(int posicao) {

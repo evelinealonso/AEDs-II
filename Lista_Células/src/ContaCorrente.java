@@ -9,7 +9,7 @@ public class ContaCorrente {
 		this.setTitular(titular);
 		this.setAgencia(agencia);
 		this.setNumConta(numConta);
-		this.setSaldo(0.0);
+		this.saldo = 0.0;
 	}
 
 	public String getTitular() {
@@ -40,10 +40,6 @@ public class ContaCorrente {
 		return saldo;
 	}
 
-	private void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
-	
 	// se o valor a ser creditado, passado como parâmetro para esse método, for positivo: 
 	// incrementa o saldo da conta-corrente com o valor de crédito informado.
     public void depositar(double credito) {
