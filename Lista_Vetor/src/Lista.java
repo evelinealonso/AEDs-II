@@ -1,7 +1,7 @@
 public class Lista<E> {
 
-	private E[] lista;
-	private int primeiro;
+	private final E[] lista;
+	private final int primeiro;
 	private int ultimo;
 	
 	public Lista(int tamanho) {
@@ -44,11 +44,11 @@ public class Lista<E> {
 		E removido;
 		
 		if (listaVazia())
-			throw new IllegalStateException("Não foi possível remover o item na lista: "
+			throw new IllegalStateException("Não foi possível remover o item da lista: "
 					+ "a lista está vazia!");
 
 		if ((posicao < 0) || (posicao >= this.ultimo))
-			throw new IndexOutOfBoundsException ("Não foi possível remover o item na lista: "
+			throw new IndexOutOfBoundsException ("Não foi possível remover o item da lista: "
 					+ "a posição informada é inválida!");
 			
 		removido = lista[posicao];
