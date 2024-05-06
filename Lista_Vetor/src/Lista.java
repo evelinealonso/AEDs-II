@@ -4,11 +4,11 @@ public class Lista<E> {
 	private final int primeiro;
 	private int ultimo;
 	
+	@SuppressWarnings("unchecked")
 	public Lista(int tamanho) {
 		
 		lista = (E[]) new Object[tamanho];
-		this.primeiro = 0;
-		this.ultimo = 0;
+		this.primeiro = this.ultimo = 0;
 	}
 	
 	public boolean vazia() {
@@ -18,7 +18,7 @@ public class Lista<E> {
 	
 	public boolean cheia() {
 		
-		return (this.ultimo == lista.length); 
+		return (this.ultimo == this.lista.length); 
 	}
 	
 	public void inserir(E novo, int posicao) {
@@ -52,7 +52,8 @@ public class Lista<E> {
 					+ "a posição informada é inválida!");
 			
 		removido = lista[posicao];
-		ultimo--;
+		
+		this.ultimo--;
 				
 		for (int i = posicao; i < this.ultimo; i++)
 			lista[i] = lista[i+1];
