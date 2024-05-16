@@ -3,7 +3,7 @@ public class Aplicacao {
 	public static void main(String[] args) {
 		ContaCorrente cc;
 	    ListaDuplamenteEncadeada<ContaCorrente> lista;
-
+	 
 	    lista = new ListaDuplamenteEncadeada<>();
 
 	    cc = new ContaCorrente("John", 36, 707);
