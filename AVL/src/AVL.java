@@ -164,45 +164,43 @@ public class AVL<E extends Comparable<E>> {
         this.raiz = remover(this.raiz, itemRemover);
     }
     
-    private No balancear(No raizArvore) {
+    private No<E> balancear(No<E> raizArvore) {
 		
 		int fatorBalanceamento;
 		int fatorBalanceamentoFilho;
 		
-		fatorBalanceamento = raizArvore.getFatorBalanceamento();
-		
-		if (fatorBalanceamento == 2) {
-			// árvore desbalanceada à esquerda.
-			fatorBalanceamentoFilho = raizArvore.getEsquerda().getFatorBalanceamento();
-			if (fatorBalanceamentoFilho == -1) {
-				System.out.println("Rotação dupla");
-				System.out.println("Rotação simples à esquerda");
-				raizArvore.setEsquerda(rotacionarEsquerda(raizArvore.getEsquerda()));
-			}
-			System.out.println("Rotação simples à direita");
-			raizArvore = rotacionarDireita(raizArvore);
-		}
-		else if (fatorBalanceamento == -2) {
-			// árvore desbalanceada à direita.
-			fatorBalanceamentoFilho = raizArvore.getDireita().getFatorBalanceamento();
-			if (fatorBalanceamentoFilho == 1) {
-				System.out.println("Rotação dupla");
-				System.out.println("Rotação simples à direita");
-				raizArvore.setDireita(rotacionarDireita(raizArvore.getDireita()));
-			}
-				System.out.println("Rotação simples à esquerda");
+		if (raizArvore != null) {
+			
+			fatorBalanceamento = raizArvore.getFatorBalanceamento();
+			
+			if (fatorBalanceamento == 2) {
+				// árvore desbalanceada à esquerda.
+				fatorBalanceamentoFilho = raizArvore.getEsquerda().getFatorBalanceamento();
+				if (fatorBalanceamentoFilho == -1)
+					// Rotação dupla
+					// Rotação simples à esquerda
+					raizArvore.setEsquerda(rotacionarEsquerda(raizArvore.getEsquerda()));
+				// Rotação simples à direita
+				raizArvore = rotacionarDireita(raizArvore);
+			} else if (fatorBalanceamento == -2) {
+				// árvore desbalanceada à direita.
+				fatorBalanceamentoFilho = raizArvore.getDireita().getFatorBalanceamento();
+				if (fatorBalanceamentoFilho == 1)
+					// Rotação dupla
+					// Rotação simples à direita
+					raizArvore.setDireita(rotacionarDireita(raizArvore.getDireita()));
+				// Rotação simples à esquerda
 				raizArvore = rotacionarEsquerda(raizArvore);
-		} else
-			raizArvore.setAltura();
-		
+			} else
+				raizArvore.setAltura();
+		}
 		return raizArvore;
-		
 	}
 	
-	private No rotacionarDireita(No p) {
+	private No<E> rotacionarDireita(No<E> p) {
 		
-		No u;
-		No filhoEsquerdaDireita;  // triângulo vermelho
+		No<E> u;
+		No<E> filhoEsquerdaDireita;  // triângulo vermelho
 		
 		u = p.getEsquerda();
 		filhoEsquerdaDireita = u.getDireita();
@@ -216,10 +214,10 @@ public class AVL<E extends Comparable<E>> {
 		return u;
 	}
 	
-	private No rotacionarEsquerda(No p) {
+	private No<E> rotacionarEsquerda(No<E> p) {
 	
-		No z;
-		No filhoDireitaEsquerda;  // triângulo vermelho
+		No<E> z;
+		No<E> filhoDireitaEsquerda;  // triângulo vermelho
 		
 		z = p.getDireita();
 		filhoDireitaEsquerda = z.getEsquerda();

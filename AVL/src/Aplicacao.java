@@ -2,7 +2,7 @@ public class Aplicacao {
 
 	public static void main(String[] args) {
 
-		ABB<Aluno> turma = new ABB<>();
+		AVL<Aluno> turma = new AVL<>();
 		Aluno alunoNovo, alunoRetirar, alunoProcurado;
 		
         if (turma.arvoreVazia())
