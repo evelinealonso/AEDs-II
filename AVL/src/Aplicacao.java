@@ -5,7 +5,7 @@ public class Aplicacao {
 		AVL<Aluno> turma = new AVL<>();
 		Aluno alunoNovo, alunoRetirar, alunoProcurado;
 		
-        if (turma.arvoreVazia())
+        if (turma.vazia())
             System.out.println("A turma está vazia."); /// Essa mensagem deve ser exibida.
         else
             System.out.println("A turma possui alunos matriculados.");

@@ -14,7 +14,7 @@ public class ABB<E extends Comparable<E>> {
     /// Retorna: 
     /// verdadeiro: se a raiz da árvore for null, o que significa que a árvore está vazia.
     /// falso: se a raiz da árvore não for null, o que significa que a árvore não está vazia.
-    public Boolean arvoreVazia() {
+    public Boolean vazia() {
         return (this.raiz == null);
     }
 
