@@ -1,4 +1,4 @@
-public class ContaCorrente implements Comparavel<ContaCorrente> {
+public class ContaCorrente implements Comparable<ContaCorrente> {
 
 	private String titular;
 	private int agencia;
