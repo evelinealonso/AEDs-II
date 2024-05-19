@@ -75,6 +75,10 @@ public class AVL<E extends Comparable<E>> {
     }
     
     public void caminhamentoEmOrdem() {
+    	
+    	if (vazia())
+    		throw new IllegalStateException("A árvore está vazia!");
+    	
     	caminhamentoEmOrdem(this.raiz);
     }
     
