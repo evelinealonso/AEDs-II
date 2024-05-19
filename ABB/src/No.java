@@ -1,4 +1,4 @@
-public class No<T> {
+public class No<T extends Comparable<T>> {
 
 	private T item;        // contém os dados do item armazenado no nodo da árvore.
 	private No<T> direita;    // referência ao nodo armazenado, na árvore, à direita do nó em questão.
