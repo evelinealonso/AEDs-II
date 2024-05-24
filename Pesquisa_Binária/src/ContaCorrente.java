@@ -64,7 +64,7 @@ public class ContaCorrente implements Comparable<ContaCorrente> {
     }
     
     public String toString() {
-    	return ("Titular: " + this.titular + "\nAgência: " + this.agencia + 
+    	return ("\nTitular: " + this.titular + "\nAgência: " + this.agencia + 
     			"\nNúmero da conta-corrente: " + this.numConta + "\nSaldo: " + this.saldo);
     }
 

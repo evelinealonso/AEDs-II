@@ -116,15 +116,22 @@ public class Lista<E extends Comparable<E>> {
 	
 	private E pesquisar(int inicio, int fim, E procurado) {
 		
-		int meio = (inicio + fim)/2;
+		int meio, comparacao;
 		
 		if (inicio > fim)
 			throw new NoSuchElementException("Item não encontrado!");
-		else if (lista[meio].equals(procurado))
+		
+		meio = (inicio + fim)/2;
+		comparacao = procurado.compareTo(lista[meio]);
+		
+		if (comparacao == 0)
+			// encontrou!
 			return lista[meio];
-		else if (lista[meio].compareTo(procurado) < 0)
+		else if (comparacao > 0)
+			// buscar entre os maiores
 			return pesquisar(meio + 1, fim, procurado);
 		else
+			// buscar entre os menores
 			return pesquisar(inicio, meio - 1, procurado);
 	}
 }
