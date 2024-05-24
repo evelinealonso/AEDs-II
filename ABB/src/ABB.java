@@ -20,18 +20,23 @@ public class ABB<E extends Comparable<E>> {
 
     private E pesquisar(No<E> raizArvore, E procurado) {
     	
+    	int comparacao;
+    	
     	if (raizArvore == null)
     		/// Se a raiz da árvore ou sub-árvore for null, a árvore está vazia e então o item não foi encontrado.
     		throw new NoSuchElementException("O item não foi localizado na árvore!");
-    	else if (raizArvore.getItem().equals(procurado))
+    	
+    	comparacao = procurado.compareTo(raizArvore.getItem());
+    	
+    	if (comparacao == 0)
     		/// O item procurado foi encontrado.
     		return raizArvore.getItem();
-    	else if (raizArvore.getItem().compareTo(procurado) > 0)
-    		/// Se o item armazenado na raiz da árvore for maior do que o item procurado:
+    	else if (comparacao < 0)
+    		/// Se o item procurado for menor do que o item armazenado na raiz da árvore:
             /// pesquise esse item na sub-árvore esquerda.    
     		return pesquisar(raizArvore.getEsquerda(), procurado);
     	else
-    		/// Se o item armazenado na raiz da árvore for menor do que o item que procurado:
+    		/// Se o item procurado for maior do que o item armazenado na raiz da árvore:
             /// pesquise esse item na sub-árvore direita.
     		return pesquisar(raizArvore.getDireita(), procurado);
     }
@@ -45,21 +50,28 @@ public class ABB<E extends Comparable<E>> {
     /// Parâmetro "item": item que deverá ser adicionado à árvore.
     /// Retorna a raiz atualizada da árvore ou sub-árvore em que o item foi adicionado.
     private No<E> adicionar(No<E> raizArvore, E item) {
+    	
+    	int comparacao;
+    	
         /// Se a raiz da árvore ou sub-árvore for null, a árvore está vazia e então um novo item é inserido.
         if (raizArvore == null)
             raizArvore = new No<>(item);
-        else if (raizArvore.getItem().compareTo(item) > 0)
-        	/// Se o item armazenado na raiz da árvore for maior do que o item que deverá ser inserido na árvore:
-            /// adicione esse novo item à sub-árvore esquerda; e atualize a referência para a sub-árvore esquerda modificada. 
-            raizArvore.setEsquerda(adicionar(raizArvore.getEsquerda(), item));
-        else if (raizArvore.getItem().compareTo(item) < 0)
-            /// Se o item armazenado na raiz da árvore for menor do que o item que deverá ser inserido na árvore:
-            /// adicione esse novo item à sub-árvore direita; e atualize a referência para a sub-árvore direita modificada.
-            raizArvore.setDireita(adicionar(raizArvore.getDireita(), item));
-        else
-            /// O item armazenado na raiz da árvore é igual ao novo item que deveria ser inserido na árvore.
-            throw new RuntimeException("O item já foi inserido anteriormente na árvore.");
-           
+        else {
+        	comparacao = item.compareTo(raizArvore.getItem());
+        
+        	if (comparacao < 0)
+        		/// Se o item que deverá ser inserido na árvore for menor do que o item armazenado na raiz da árvore:
+        		/// adicione esse novo item à sub-árvore esquerda; e atualize a referência para a sub-árvore esquerda modificada. 
+        		raizArvore.setEsquerda(adicionar(raizArvore.getEsquerda(), item));
+        	else if (comparacao > 0)
+        		/// Se o item que deverá ser inserido na árvore for maior do que o item armazenado na raiz da árvore:
+        		/// adicione esse novo item à sub-árvore direita; e atualize a referência para a sub-árvore direita modificada.
+        		raizArvore.setDireita(adicionar(raizArvore.getDireita(), item));
+        	else
+        		/// O item armazenado na raiz da árvore é igual ao novo item que deveria ser inserido na árvore.
+        		throw new RuntimeException("O item já foi inserido anteriormente na árvore.");
+        }
+        
         /// Retorna a raiz atualizada da árvore ou sub-árvore em que o item foi adicionado.
         return raizArvore;
     }
@@ -120,11 +132,17 @@ public class ABB<E extends Comparable<E>> {
     /// Parâmetro "itemRemover": item que deverá ser localizado e removido da árvore.
     /// Retorna a raiz atualizada da árvore ou sub-árvore da qual o item foi retirado.
     private No<E> remover(No<E> raizArvore, E itemRemover) {
+    	
+    	int comparacao;
+    	
         /// Se a raiz da árvore ou sub-árvore for null, a árvore está vazia e o item, que deveria ser retirado dessa árvore, não foi encontrado.
         /// Nesse caso, deve-se lançar uma exceção.
         if (raizArvore == null) 
         	throw new NoSuchElementException("O item a ser removido não foi localizado na árvore!");
-        else if (raizArvore.getItem().compareTo(itemRemover) == 0) {
+        
+        comparacao = itemRemover.compareTo(raizArvore.getItem());
+        
+        if (comparacao == 0) {
             /// O item armazenado na raiz da árvore corresponde ao item que deve ser retirado dessa árvore.
             /// Ou seja, o item que deve ser retirado da árvore foi encontrado.
         	if (raizArvore.getDireita() == null)
@@ -145,13 +163,13 @@ public class ABB<E extends Comparable<E>> {
                 /// o antecessor desse nó o substitui.
                 /// A sub-árvore esquerda do nó que foi retirado é atualizada com a remoção do antecessor.
                 raizArvore.setEsquerda(antecessor(raizArvore, raizArvore.getEsquerda()));
-        } else if (raizArvore.getItem().compareTo(itemRemover) > 0)
-        	/// Se o item armazenado na raiz da árvore for maior do que o item que deverá ser localizado e retirado da árvore:
-            /// pesquise e retire esse item da sub-árvore esquerda.
+        } else if (comparacao < 0)
+        	/// Se o item que deverá ser localizado e retirado da árvore for menor do que o item armazenado na raiz da árvore:
+        	/// pesquise e retire esse item da sub-árvore esquerda.
             raizArvore.setEsquerda(remover(raizArvore.getEsquerda(), itemRemover));
         else
-        	/// Se o item armazenado na raiz da árvore for menor do que o item que deverá ser localizado e retirado da árvore:
-            /// pesquise e retire esse item da sub-árvore direita.
+        	/// Se o item que deverá ser localizado e retirado da árvore for maior do que o item armazenado na raiz da árvore:
+        	/// pesquise e retire esse item da sub-árvore direita.
             raizArvore.setDireita(remover(raizArvore.getDireita(), itemRemover));
          
         /// Retorna a raiz atualizada da árvore ou sub-árvore da qual o item foi retirado.

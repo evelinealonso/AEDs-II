@@ -72,7 +72,6 @@ public class Aluno implements Comparable<Aluno> {
 	public boolean equals(Object outroObjeto) {
 		
 		Aluno outroAluno = (Aluno) outroObjeto;
-		
 		return (this.nome.equals(outroAluno.getNome()));
 	}
 }
