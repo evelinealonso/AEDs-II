@@ -1,4 +1,4 @@
-public class ContaCorrente implements Comparavel<ContaCorrente> {
+public class ContaCorrente {
 
 	private String titular;
 	private int agencia;
@@ -64,7 +64,7 @@ public class ContaCorrente implements Comparavel<ContaCorrente> {
     }
     
     public String toString() {
-    	return ("Titular: " + this.titular + "\nAgência: " + this.agencia + 
+    	return ("\nTitular: " + this.titular + "\nAgência: " + this.agencia + 
     			"\nNúmero da conta-corrente: " + this.numConta + "\nSaldo: " + this.saldo);
     }
 
@@ -73,10 +73,5 @@ public class ContaCorrente implements Comparavel<ContaCorrente> {
 		
 		ContaCorrente cc = (ContaCorrente) outroObjeto;
 		return (this.getTitular().equals(cc.getTitular()));
-	}
-
-	@Override
-	public int compareTo(ContaCorrente cc) {
-		return (this.getTitular().compareTo(cc.getTitular()));
 	}
 }

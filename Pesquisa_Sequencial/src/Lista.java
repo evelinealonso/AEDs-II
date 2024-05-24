@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class Lista<E extends Comparavel<E>> {
+public class Lista<E> {
 
 	private final E[] lista;
 	private final int primeiro;
@@ -9,7 +9,7 @@ public class Lista<E extends Comparavel<E>> {
 	@SuppressWarnings("unchecked")
 	public Lista(int tamanho) {
 		
-		lista = (E[]) new Comparavel[tamanho];
+		lista = (E[]) new Object[tamanho];
 		this.primeiro = this.ultimo = 0;
 	}
 	
