@@ -41,7 +41,7 @@ public class ABB<E extends Comparable<E>> {
     		return pesquisar(raizArvore.getDireita(), procurado);
     }
     
-    public E pequisar(E procurado) {
+    public E pesquisar(E procurado) {
     	return pesquisar(this.raiz, procurado);
     }
     
