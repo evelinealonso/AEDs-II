@@ -112,11 +112,11 @@ public class ABB<E extends Comparable<E>> {
     /// Parâmetro "itemRetirar": referência ao nó que armazena o item que deverá ser retirado da árvore.
     /// Parâmetro "raizArvore": raiz da árvore ou sub-árvore em que o antecessor do nó que deverá ser retirado deverá ser localizado.
     /// Retorna: raiz atualizada da árvore ou sub-árvore após a remoção do antecessor do nó que foi retirado da árvore.
-    private No<E> antecessor(No<E> itemRetirar, No<E> raizArvore) {
+    private No<E> removerNoAntecessor(No<E> itemRetirar, No<E> raizArvore) {
         /// Se o antecessor do nó que deverá ser retirado da árvore ainda não foi encontrado...
         if (raizArvore.getDireita() != null)
             /// Pesquise o antecessor na sub-árvore direita.
-            raizArvore.setDireita(antecessor(itemRetirar, raizArvore.getDireita()));
+            raizArvore.setDireita(removerNoAntecessor(itemRetirar, raizArvore.getDireita()));
         else {
         	/// O antecessor do nó que deverá ser retirado da árvore foi encontrado e deverá substitui-lo.
             itemRetirar.setItem(raizArvore.getItem());
@@ -162,7 +162,7 @@ public class ABB<E extends Comparable<E>> {
                 /// Depois de ser localizado na sub-árvore esquerda do nó que está sendo retirado, 
                 /// o antecessor desse nó o substitui.
                 /// A sub-árvore esquerda do nó que foi retirado é atualizada com a remoção do antecessor.
-                raizArvore.setEsquerda(antecessor(raizArvore, raizArvore.getEsquerda()));
+                raizArvore.setEsquerda(removerNoAntecessor(raizArvore, raizArvore.getEsquerda()));
         } else if (comparacao < 0)
         	/// Se o item que deverá ser localizado e retirado da árvore for menor do que o item armazenado na raiz da árvore:
         	/// pesquise e retire esse item da sub-árvore esquerda.
