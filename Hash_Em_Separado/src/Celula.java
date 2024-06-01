@@ -1,8 +1,8 @@
-public class Celula<K, T> {
+public class Celula<K, V> {
 
 	private final K chave;
-	private final T item;
-	private Celula<K, T> proximo;
+	private final V item;
+	private Celula<K, V> proximo;
 
 	public Celula() {
 		this.chave = null;
@@ -10,13 +10,13 @@ public class Celula<K, T> {
 		setProximo(null);
 	}
 
-	public Celula(K chave, T item) {
+	public Celula(K chave, V item) {
 		this.chave = chave;
 		this.item = item;
 		setProximo(null);
 	}
 
-	public Celula(K chave, T item, Celula<K, T> proximo) {
+	public Celula(K chave, V item, Celula<K, V> proximo) {
 		this.chave = chave;
         this.item = item;
         this.proximo = proximo;
@@ -26,15 +26,15 @@ public class Celula<K, T> {
 		return chave;
 	}
 	
-	public T getItem() {
+	public V getItem() {
 		return item;
 	}
 
-	public Celula<K, T> getProximo() {
+	public Celula<K, V> getProximo() {
 		return proximo;
 	}
 
-	public void setProximo(Celula<K, T> proximo) {
+	public void setProximo(Celula<K, V> proximo) {
 		this.proximo = proximo;
 	}
 }

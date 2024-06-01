@@ -1,14 +1,14 @@
 import java.util.NoSuchElementException;
 
-public class Lista<K, E> {
+public class Lista<K, V> {
 
-	private Celula<K, E> primeiro;
-	private Celula<K, E> ultimo;
+	private Celula<K, V> primeiro;
+	private Celula<K, V> ultimo;
 	private int tamanho;
 	
 	public Lista() {
 		
-		Celula<K, E> sentinela = new Celula<>();
+		Celula<K, V> sentinela = new Celula<>();
 		
 		this.primeiro = this.ultimo = sentinela;
 		this.tamanho = 0;
@@ -19,9 +19,9 @@ public class Lista<K, E> {
 		return (this.primeiro == this.ultimo);
 	}
 	
-	public void inserir(K chave, E novo, int posicao) {
+	public void inserir(K chave, V novo, int posicao) {
 		
-		Celula<K, E> anterior, novaCelula, proximaCelula;
+		Celula<K, V> anterior, novaCelula, proximaCelula;
 		
 		if ((posicao < 0) || (posicao > this.tamanho))
 			throw new IndexOutOfBoundsException("Não foi possível inserir o item na lista: "
@@ -44,9 +44,9 @@ public class Lista<K, E> {
 		this.tamanho++;		
 	}
 	
-	public void inserirFinal(K chave, E novo) {
+	public void inserirFinal(K chave, V novo) {
 		
-		Celula<K, E> novaCelula = new Celula<>(chave, novo);
+		Celula<K, V> novaCelula = new Celula<>(chave, novo);
 		
 		this.ultimo.setProximo(novaCelula);
 		this.ultimo = novaCelula;
@@ -54,9 +54,9 @@ public class Lista<K, E> {
 		this.tamanho++;
 	}
 	
-	private E removerProxima(Celula<K, E> anterior) {
+	private V removerProxima(Celula<K, V> anterior) {
 		
-		Celula<K, E> celulaRemovida, proximaCelula;
+		Celula<K, V> celulaRemovida, proximaCelula;
 		
 		celulaRemovida = anterior.getProximo();
 		
@@ -73,9 +73,9 @@ public class Lista<K, E> {
 		return (celulaRemovida.getItem());	
 	}
 	
-	public E remover(int posicao) {
+	public V remover(int posicao) {
 		
-		Celula<K, E> anterior;
+		Celula<K, V> anterior;
 		
 		if (vazia())
 			throw new IllegalStateException("Não foi possível remover o item da lista: "
@@ -92,9 +92,9 @@ public class Lista<K, E> {
 		return (removerProxima(anterior));
 	}
 	
-	public E remover(K chave) {
+	public V remover(K chave) {
 		
-		Celula<K, E> anterior;
+		Celula<K, V> anterior;
 		
 		if (vazia())
 			throw new IllegalStateException("Não foi possível remover o item da lista: "
@@ -111,9 +111,9 @@ public class Lista<K, E> {
 		}
 	}
 	
-	public E pesquisar(K procurado) {
+	public V pesquisar(K procurado) {
 		
-		Celula<K, E> aux;
+		Celula<K, V> aux;
 		
 		aux = this.primeiro.getProximo();
 		
@@ -128,7 +128,7 @@ public class Lista<K, E> {
 	
 	public void imprimir() {
 		
-		Celula<K, E> aux;
+		Celula<K, V> aux;
 		
 		aux = this.primeiro.getProximo();
 		
