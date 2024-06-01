@@ -44,7 +44,7 @@ public class Aplicacao {
         	System.out.println("Removendo Benício:");
         	turma.remover("Benício"); 
         } catch (Exception excecao) {
-        	System.out.println(excecao.getMessage()); /// Deve ser exibida a mensagem: "O item a ser removido não foi localizado na árvore!"
+        	System.out.println(excecao.getMessage()); /// Deve ser exibida a mensagem: "Item não encontrado!"
 
         }
         
