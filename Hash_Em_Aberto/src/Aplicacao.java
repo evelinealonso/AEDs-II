@@ -37,8 +37,8 @@ public class Aplicacao {
         System.out.println("Pesquisando por Amanda:");
         System.out.println(turma.pesquisar("Amanda"));
         
-        System.out.println("Pesquisando por Evandro:");
-        System.out.println(turma.pesquisar("Evandro"));
+        System.out.println("Pesquisando por Sônia:");
+        System.out.println(turma.pesquisar("Sônia"));
         
         try {
         	System.out.println("Removendo Benício:");

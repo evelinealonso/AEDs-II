@@ -1,10 +1,10 @@
-public class Entrada<K, T> {
+public class Entrada<K, V> {
 
 	private final K chave;
-	private final T item;
+	private final V item;
 	private boolean isRemovida;
 
-	public Entrada(K chave, T item) {
+	public Entrada(K chave, V item) {
 		this.chave = chave;
 		this.item = item;
 		this.setRemovida(false);
@@ -14,7 +14,7 @@ public class Entrada<K, T> {
 		return chave;
 	}
 	
-	public T getItem() {
+	public V getItem() {
 		return item;
 	}
 
