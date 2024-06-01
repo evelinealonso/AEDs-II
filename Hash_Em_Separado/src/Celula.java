@@ -1,4 +1,4 @@
-public class Celula<K, T extends Comparable <T>> {
+public class Celula<K, T> {
 
 	private final K chave;
 	private final T item;

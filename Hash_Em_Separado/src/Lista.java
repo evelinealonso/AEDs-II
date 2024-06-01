@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class Lista<K, E extends Comparable<E>> {
+public class Lista<K, E> {
 
 	private Celula<K, E> primeiro;
 	private Celula<K, E> ultimo;
@@ -54,7 +54,7 @@ public class Lista<K, E extends Comparable<E>> {
 		this.tamanho++;
 	}
 	
-	private E remover(Celula<K, E> anterior) {
+	private E removerProxima(Celula<K, E> anterior) {
 		
 		Celula<K, E> celulaRemovida, proximaCelula;
 		
@@ -89,7 +89,7 @@ public class Lista<K, E extends Comparable<E>> {
 		for (int i = 0; i < posicao; i++)
 			anterior = anterior.getProximo();
 				
-		return (remover(anterior));
+		return (removerProxima(anterior));
 	}
 	
 	public E remover(K chave) {
@@ -107,7 +107,7 @@ public class Lista<K, E extends Comparable<E>> {
 		if (anterior.getProximo() == null)
 			throw new NoSuchElementException("Item não encontrado!");
 		else {
-			return (remover(anterior));
+			return (removerProxima(anterior));
 		}
 	}
 	
