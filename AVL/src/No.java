@@ -50,6 +50,14 @@ public class No<T extends Comparable<T>> {
 		this.esquerda = esquerda;
 	}
 	
+	private int getAltura(No<T> no) {
+		
+		if (no != null)
+			return no.getAltura();
+		else
+			return -1;
+	}
+	
 	public int getAltura() {
 		return this.altura;
 	}
@@ -58,15 +66,8 @@ public class No<T extends Comparable<T>> {
 		
 		int alturaEsquerda, alturaDireita;
 		
-		if (this.esquerda != null)
-			alturaEsquerda = this.esquerda.getAltura();
-		else
-			alturaEsquerda = -1;
-		
-		if (this.direita != null)
-			alturaDireita = this.direita.getAltura();
-		else
-			alturaDireita = -1;
+		alturaEsquerda = getAltura(this.esquerda);
+		alturaDireita = getAltura(this.direita);
 		
 		if (alturaEsquerda > alturaDireita)
 			this.altura = alturaEsquerda + 1;
@@ -78,15 +79,8 @@ public class No<T extends Comparable<T>> {
 		
 		int alturaEsquerda, alturaDireita;
 		
-		if (this.esquerda != null)
-			alturaEsquerda = this.esquerda.getAltura();
-		else
-			alturaEsquerda = -1;
-		
-		if (this.direita != null)
-			alturaDireita = this.direita.getAltura();
-		else
-			alturaDireita = -1;
+		alturaEsquerda = getAltura(this.esquerda);
+		alturaDireita = getAltura(this.direita);
 		
 		return (alturaEsquerda - alturaDireita);
 	}

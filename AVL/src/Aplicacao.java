@@ -40,10 +40,10 @@ public class Aplicacao {
         turma.caminhamentoEmOrdem(); // Amanda - Evandro - Ivo - Olívia - Sônia - Uriel
         
         alunoProcurado = new Aluno(0, "Amanda", 0.0);
-        System.out.println(turma.pequisar(alunoProcurado));
+        System.out.println(turma.pesquisar(alunoProcurado));
         
         alunoProcurado = new Aluno(0, "Evandro", 0.0);
-        System.out.println(turma.pequisar(alunoProcurado));
+        System.out.println(turma.pesquisar(alunoProcurado));
         
         try {
         	alunoRetirar = new Aluno(0, "Benício", 0.0);
