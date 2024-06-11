@@ -4,16 +4,20 @@ public class ABB<E extends Comparable<E>> {
 
 	private No<E> raiz; // referência à raiz da árvore.
 
-    /// Construtor da classe.
-    /// Esse construtor cria uma nova árvore binária de busca vazia. Para isso, esse método atribui null à raiz da árvore.
+	/**
+     * Construtor da classe.
+     * Esse construtor cria uma nova árvore binária de busca vazia. Para isso, esse método atribui null à raiz da árvore.
+     */
     public ABB() {
         raiz = null;
     }
 
-    /// Método booleano que indica se a árvore está vazia ou não.
-    /// Retorna: 
-    /// verdadeiro: se a raiz da árvore for null, o que significa que a árvore está vazia.
-    /// falso: se a raiz da árvore não for null, o que significa que a árvore não está vazia.
+    /**
+     * Método booleano que indica se a árvore está vazia ou não.
+     * @return
+     * verdadeiro: se a raiz da árvore for null, o que significa que a árvore está vazia.
+     * falso: se a raiz da árvore não for null, o que significa que a árvore não está vazia.
+     */
     public Boolean vazia() {
         return (this.raiz == null);
     }
@@ -45,11 +49,13 @@ public class ABB<E extends Comparable<E>> {
     	return pesquisar(this.raiz, procurado);
     }
     
-    /// Método recursivo responsável por adicionar um item à árvore.
-    /// Parâmetro "raizArvore": raiz da árvore ou sub-árvore em que o item será adicionado.
-    /// Parâmetro "item": item que deverá ser adicionado à árvore.
-    /// Retorna a raiz atualizada da árvore ou sub-árvore em que o item foi adicionado.
-    private No<E> adicionar(No<E> raizArvore, E item) {
+    /**
+     * Método recursivo responsável por adicionar um item à árvore.
+     * @param raizArvore: raiz da árvore ou sub-árvore em que o item será adicionado.
+     * @param item: item que deverá ser adicionado à árvore.
+     * @return a raiz atualizada da árvore ou sub-árvore em que o item foi adicionado.
+     */
+    protected No<E> adicionar(No<E> raizArvore, E item) {
     	
     	int comparacao;
     	
@@ -76,8 +82,10 @@ public class ABB<E extends Comparable<E>> {
         return raizArvore;
     }
 
-    /// Método que encapsula a adição recursiva de itens à árvore.
-    /// Parâmetro "item": item que deverá ser inserido na árvore.
+    /**
+     * Método que encapsula a adição recursiva de itens à árvore.
+     * @param item: item que deverá ser inserido na árvore.
+     */
     public void adicionar(E item) {
         /// Chama o método recursivo "adicionar", que será responsável por adicionar, o item passado como parâmetro, à árvore.
         /// O método "adicionar" recursivo receberá, como primeiro parâmetro, a raiz atual da árvore; e, como segundo parâmetro, 
@@ -102,17 +110,19 @@ public class ABB<E extends Comparable<E>> {
     	}
     }
     
-    /// Método recursivo responsável por localizar na árvore ou sub-árvore o antecessor do nó que deverá ser retirado. 
-    /// O antecessor do nó que deverá ser retirado da árvore corresponde
-    /// ao nó que armazena o item que é o maior, 
-    /// dentre os itens menores do que o item que deverá ser retirado.
-    /// Depois de ser localizado na árvore ou sub-árvore, 
-    /// o antecessor do nó que deverá ser retirado da árvore o substitui.
-    /// Adicionalmente, a árvore ou sub-árvore é atualizada com a remoção do antecessor.
-    /// Parâmetro "itemRetirar": referência ao nó que armazena o item que deverá ser retirado da árvore.
-    /// Parâmetro "raizArvore": raiz da árvore ou sub-árvore em que o antecessor do nó que deverá ser retirado deverá ser localizado.
-    /// Retorna: raiz atualizada da árvore ou sub-árvore após a remoção do antecessor do nó que foi retirado da árvore.
-    private No<E> removerNoAntecessor(No<E> itemRetirar, No<E> raizArvore) {
+    /**
+     * Método recursivo responsável por localizar na árvore ou sub-árvore o antecessor do nó que deverá ser retirado. 
+     * O antecessor do nó que deverá ser retirado da árvore corresponde
+     * ao nó que armazena o item que é o maior, 
+     * dentre os itens menores do que o item que deverá ser retirado.
+     * Depois de ser localizado na árvore ou sub-árvore, 
+     * o antecessor do nó que deverá ser retirado da árvore o substitui.
+     * Adicionalmente, a árvore ou sub-árvore é atualizada com a remoção do antecessor.
+     * @param itemRetirar: referência ao nó que armazena o item que deverá ser retirado da árvore.
+     * @param raizArvore: raiz da árvore ou sub-árvore em que o antecessor do nó que deverá ser retirado deverá ser localizado.
+     * @return a raiz atualizada da árvore ou sub-árvore após a remoção do antecessor do nó que foi retirado da árvore.
+     */
+    protected No<E> removerNoAntecessor(No<E> itemRetirar, No<E> raizArvore) {
         /// Se o antecessor do nó que deverá ser retirado da árvore ainda não foi encontrado...
         if (raizArvore.getDireita() != null)
             /// Pesquise o antecessor na sub-árvore direita.
@@ -127,11 +137,13 @@ public class ABB<E extends Comparable<E>> {
         return raizArvore;
     }
 
-    /// Método recursivo responsável por localizar um item na árvore e retirá-lo da árvore.
-    /// Parâmetro "raizArvore": raiz da árvore ou sub-árvore da qual o item será retirado.
-    /// Parâmetro "itemRemover": item que deverá ser localizado e removido da árvore.
-    /// Retorna a raiz atualizada da árvore ou sub-árvore da qual o item foi retirado.
-    private No<E> remover(No<E> raizArvore, E itemRemover) {
+    /**
+     * Método recursivo responsável por localizar um item na árvore e retirá-lo da árvore.
+     * @param raizArvore: raiz da árvore ou sub-árvore da qual o item será retirado.
+     * @param itemRemover: item que deverá ser localizado e removido da árvore.
+     * @return a raiz atualizada da árvore ou sub-árvore da qual o item foi retirado.
+     */
+    protected No<E> remover(No<E> raizArvore, E itemRemover) {
     	
     	int comparacao;
     	
@@ -176,8 +188,10 @@ public class ABB<E extends Comparable<E>> {
         return raizArvore;
     }
 
-    /// Método que encapsula a remoção recursiva de um item da árvore.
-    /// Parâmetro "itemRemover": item que deverá ser localizado e removido da árvore.
+    /**
+     * Método que encapsula a remoção recursiva de um item da árvore.
+     * @param itemRemover: item que deverá ser localizado e removido da árvore.
+     */
     public void remover(E itemRemover) {
         /// Chama o método recursivo "remover", que será responsável por pesquisar o item passado como parâmetro na árvore e retirá-lo da árvore.
         /// O método "remover" recursivo receberá, como primeiro parâmetro, a raiz atual da árvore; 

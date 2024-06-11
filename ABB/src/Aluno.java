@@ -4,11 +4,13 @@ public class Aluno implements Comparable<Aluno> {
     private String nome;      // nome do aluno.
     private double nota;      // nota do aluno.
     
-    /// Construtor da classe.
-    /// Esse construtor cria um novo objeto da classe Aluno atribuindo a esse objeto os seguintes valores:
-    /// - numMatricula recebe o valor que foi passado por meio do parâmetro matricula.
-    /// - nome recebe o valor que foi passado por meio do parâmetro nome.
-    /// - nota recebe o valor que foi passado por meio do parâmetro nota.
+    /**
+    * Construtor da classe.
+    * Esse construtor cria um novo objeto da classe Aluno de acordo com os valores recebidos por parâmetro.
+    * @param matricula: será atribuído ao atributo "numMatricula".
+    * @param nome: será atribuído ao atributo "nome".
+    * @param nota: será atribuído ao atributo "nota".
+    */
     public Aluno(int matricula, String nome, double nota) {
         this.numMatricula = matricula;
         this.nome = nome;
@@ -21,7 +23,7 @@ public class Aluno implements Comparable<Aluno> {
     }
     
 	/**
-	 * @return the numMatricula
+	 * @return numMatricula
 	 */
 	public int getNumMatricula() {
 		return this.numMatricula;
@@ -35,7 +37,7 @@ public class Aluno implements Comparable<Aluno> {
 	}
 
 	/**
-	 * @return the nome
+	 * @return nome
 	 */
 	public String getNome() {
 		return this.nome;
@@ -49,7 +51,7 @@ public class Aluno implements Comparable<Aluno> {
 	}
 
 	/**
-	 * @return the nota
+	 * @return nota
 	 */
 	public double getNota() {
 		return this.nota;
