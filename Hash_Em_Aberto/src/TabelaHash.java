@@ -7,12 +7,14 @@ public class TabelaHash<K, V> {
 	private int capacidade; /// tamanho da tabela hash.
 	                        /// deve ser um número primo grande para diminuirmos a probabilidade de colisões.
 
-	/// Construtor da classe.
-	/// Esse método é responsável por inicializar a tabela hash que trabalha com endereçamento em aberto e rehashing.
-	/// Assim, esse método atribui, ao atributo "capacidade", dessa classe, o valor passado por meio do parâmetro "capacidade".
-	/// Esse método também cria um vetor, de tamanho "capacidade", de entradas; e o atribui ao atributo "tabelaHash".
-	/// Adicionalmente, cada posição do vetor é inicializada com null.
-	/// Parâmetro "capacidade": tamanho da tabela hash. 
+	/**
+	 * Construtor da classe.
+	 * Esse método é responsável por inicializar a tabela hash que trabalha com endereçamento em aberto e rehashing.
+	 * Assim, esse método atribui, ao atributo "capacidade", dessa classe, o valor passado por meio do parâmetro "capacidade".
+	 * Esse método também cria um vetor, de tamanho "capacidade", de entradas; e o atribui ao atributo "tabelaHash".
+	 * Adicionalmente, cada posição do vetor é inicializada com null. 
+	 * @param capacidade: tamanho da tabela hash. 
+	 */
 	@SuppressWarnings("unchecked")
 	public TabelaHash(int capacidade) {
 		
@@ -23,24 +25,27 @@ public class TabelaHash<K, V> {
 			this.tabelaHash[i] = null;
 	}
 	
-	/// Esse método implementa a função de transformação da tabela hash, 
-	/// ou seja, calcula a posição, na tabela hash, em que o item,
-	/// que possui a chave informada por meio do parâmetro "chave", deve ser encontrado.
-	/// A função de transformação utilizada corresponde ao resto da divisão do hashCode de "chave" + "tentativas"
-	/// pelo tamanho da tabela hash.
-	/// Parâmetro "chave": chave da qual desejamos saber a posição na tabela hash.
-	/// Parâmetro "tentativas": indica a quantidade de tentativas realizadas com o objetivo de se localizar o item na tabela hash.
-	/// Retorna a posição que o item, cuja chave corresponde a que foi passada como parâmetro para esse método, 
-	/// deve ocupar na tabela hash.
+	/**
+	 * Esse método implementa a função de transformação da tabela hash, 
+	 * ou seja, calcula a posição, na tabela hash, em que o item,
+	 * que possui a chave informada por meio do parâmetro "chave", deve ser encontrado.
+	 * A função de transformação utilizada corresponde ao resto da divisão do hashCode de "chave" + "tentativas"
+	 * pelo tamanho da tabela hash.
+	 * @param chave: chave da qual desejamos saber a posição na tabela hash.
+	 * @param tentativas: indica a quantidade de tentativas realizadas com o objetivo de se localizar o item na tabela hash.
+	 * @return a posição que o item, cuja chave corresponde a que foi passada como parâmetro para esse método, deve ocupar na tabela hash.
+	 */
 	private int funcaoHash(K chave, int tentativas) {
 		return (Math.abs(chave.hashCode() + tentativas)) % this.capacidade;
 	}
 	
-	/// Método responsável por inserir um novo item na tabela hash.
-	/// Não é permitido inserir, nessa tabela hash, mais de um item com uma mesma chave.
-	/// Parâmetro "chave": chave do item que deve ser inserido na tabela hash.
-	/// Parâmetro "item": referência ao item que deve ser inserido na tabela hash.
-	/// Retorna a posição na tabela hash em que o novo item foi inserido.
+	/**
+	 * Método responsável por inserir um novo item na tabela hash.
+	 * Não é permitido inserir, nessa tabela hash, mais de um item com uma mesma chave. 
+	 * @param chave: chave do item que deve ser inserido na tabela hash.
+	 * @param item: referência ao item que deve ser inserido na tabela hash.
+	 * @return a posição na tabela hash em que o novo item foi inserido.
+	 */
 	public int inserir(K chave, V item) {
 		
 		int tentativas = 0;
@@ -67,11 +72,13 @@ public class TabelaHash<K, V> {
 			throw new IllegalStateException("A tabela hash está cheia: não foi possível inserir o novo elemento.");
 	}
 	
-	/// Método responsável por localizar, na tabela hash, o item
-	/// cuja chave corresponde à que foi passada como parâmetro para esse método.
-	/// Parâmetro "chave": chave do item que deve ser localizado na tabela hash.
-	/// Retorna uma referência ao item encontrado.
-	/// O método lança uma exceção caso o item não tenha sido localizado na tabela hash.
+	/**
+	 * Método responsável por localizar, na tabela hash, o item
+	 * cuja chave corresponde à que foi passada como parâmetro para esse método. 
+	 * @param chave: chave do item que deve ser localizado na tabela hash.
+	 * @return uma referência ao item encontrado.
+	 * O método lança uma exceção caso o item não tenha sido localizado na tabela hash.
+	 */
 	public V pesquisar(K chave) {
 		
 		int tentativas = 0;
@@ -93,11 +100,13 @@ public class TabelaHash<K, V> {
 		throw new NoSuchElementException("Item não encontrado!");
 	}
 	
-	/// Método responsável por remover, da tabela hash, o item
-	/// cuja chave corresponde à que foi passada como parâmetro para esse método.
-	/// Parâmetro "chave": chave do item que deve ser removido da tabela hash.
-	/// Retorna uma referência ao item removido.
-	/// O método lança uma exceção caso o item não seja localizado na tabela hash.
+	/**
+	 * Método responsável por remover, da tabela hash, o item
+	 * cuja chave corresponde à que foi passada como parâmetro para esse método.
+	 * @param chave: chave do item que deve ser removido da tabela hash.
+	 * @return uma referência ao item removido.
+	 * O método lança uma exceção caso o item não seja localizado na tabela hash.
+	 */
 	public V remover(K chave) {
 		
 		int tentativas = 0;
@@ -121,10 +130,12 @@ public class TabelaHash<K, V> {
 		throw new NoSuchElementException("Item não encontrado!");
 	}
 	
-	/// Método responsável por imprimir todo o conteúdo da tabela hash.
-	/// É impresso o índice da tabela hash e seu correspondente conteúdo.
-	/// Se a posição da tabela hash estiver vazia, é impressa uma mensagem explicativa.
-	/// Caso contrário, para cada posição da tabela hash, são impressos seus dados.
+	/**
+	 * Método responsável por imprimir todo o conteúdo da tabela hash.
+	 * É impresso o índice da tabela hash e seu correspondente conteúdo.
+	 * Se a posição da tabela hash estiver vazia, é impressa uma mensagem explicativa.
+	 * Caso contrário, para cada posição da tabela hash, são impressos seus dados.
+	 */
 	public void imprimir(){
 	
 		for (int i = 0; i < this.capacidade; i++) {
