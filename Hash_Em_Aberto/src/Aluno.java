@@ -1,4 +1,4 @@
-public class Aluno implements Comparable<Aluno> {
+public class Aluno {
 
 	private int numMatricula; // número de matrícula do aluno.
     private String nome;      // nome do aluno.
@@ -62,18 +62,5 @@ public class Aluno implements Comparable<Aluno> {
 	 */
 	public void setNota(double nota) {
 		this.nota = nota;
-	}
-
-	@Override
-	public int compareTo(Aluno outroAluno) {
-		
-		return (this.nome.compareTo(outroAluno.getNome()));
-	}
-	
-	@Override
-	public boolean equals(Object outroObjeto) {
-		
-		Aluno outroAluno = (Aluno) outroObjeto;
-		return (this.nome.equals(outroAluno.getNome()));
 	}
 }

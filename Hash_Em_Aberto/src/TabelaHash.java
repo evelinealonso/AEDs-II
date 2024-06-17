@@ -88,7 +88,7 @@ public class TabelaHash<K, V> {
 			if (this.tabelaHash[posicao] == null)
 				throw new NoSuchElementException("Item não encontrado!");
 			else if ((this.tabelaHash[posicao].getChave().equals(chave)) && !(this.tabelaHash[posicao].isRemovida()))
-					return this.tabelaHash[posicao].getItem();
+					return this.tabelaHash[posicao].getValor();
 			else {
 				tentativas++;
 				
@@ -118,7 +118,7 @@ public class TabelaHash<K, V> {
 				throw new NoSuchElementException("Item não encontrado!");
 			else if ((this.tabelaHash[posicao].getChave().equals(chave)) && !(this.tabelaHash[posicao].isRemovida())) {
 					this.tabelaHash[posicao].setRemovida(true);
-					return this.tabelaHash[posicao].getItem();
+					return this.tabelaHash[posicao].getValor();
 			} else {
 				tentativas++;
 				
@@ -143,7 +143,7 @@ public class TabelaHash<K, V> {
 			if ((this.tabelaHash[i] == null) || (this.tabelaHash[i].isRemovida()))
 				System.out.println("vazia");
 			else 
-				System.out.println(this.tabelaHash[i].getItem());
+				System.out.println(this.tabelaHash[i]);
 		}
 	}
 }
