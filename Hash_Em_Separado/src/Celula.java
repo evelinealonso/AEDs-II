@@ -1,40 +1,36 @@
-public class Celula<K, V> {
+public class Celula<T> {
 
-	private final K chave;
-	private final V item;
-	private Celula<K, V> proximo;
+	private T item;
+	private Celula<T> proximo;
 
 	public Celula() {
-		this.chave = null;
 		this.item = null;
 		setProximo(null);
 	}
 
-	public Celula(K chave, V item) {
-		this.chave = chave;
+	public Celula(T item) {
 		this.item = item;
 		setProximo(null);
 	}
 
-	public Celula(K chave, V item, Celula<K, V> proximo) {
-		this.chave = chave;
+	public Celula(T item, Celula<T> proximo) {
         this.item = item;
         this.proximo = proximo;
     }
 	
-	public K getChave() {
-		return chave;
-	}
-	
-	public V getItem() {
+	public T getItem() {
 		return item;
 	}
 
-	public Celula<K, V> getProximo() {
+	public void setItem(T item) {
+		this.item = item;
+	}
+	
+	public Celula<T> getProximo() {
 		return proximo;
 	}
 
-	public void setProximo(Celula<K, V> proximo) {
+	public void setProximo(Celula<T> proximo) {
 		this.proximo = proximo;
 	}
 }

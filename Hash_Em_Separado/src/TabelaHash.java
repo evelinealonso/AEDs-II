@@ -2,7 +2,7 @@ import java.util.NoSuchElementException;
 
 public class TabelaHash<K, V> {
 
-	private Lista<K, V>[] tabelaHash; /// tabela que referenciará todas as listas lineares encadeadas.
+	private Lista<Entrada<K, V>>[] tabelaHash; /// tabela que referenciará todas as listas lineares encadeadas.
 								      /// Nesse caso, estamos utilizando uma tabela hash com endereçamento em separado,
 								      /// ou seja, os itens são armazenados em listas lineares encadeadas.
 
@@ -21,7 +21,7 @@ public class TabelaHash<K, V> {
 	public TabelaHash(int capacidade) {
 		
 		this.capacidade = capacidade;
-		this.tabelaHash = (Lista<K, V>[]) new Lista[this.capacidade]; 
+		this.tabelaHash = (Lista<Entrada<K, V>>[]) new Lista[this.capacidade]; 
 		
 		for (int i = 0; i < this.capacidade; i++)
 			this.tabelaHash[i] = new Lista<>();
@@ -51,16 +51,18 @@ public class TabelaHash<K, V> {
 		/// cálculo da posição da tabela hash em que o novo item deverá ser armazenado.
 		int posicao = funcaoHash(chave);
 		
+		Entrada<K, V> entrada = new Entrada<>(chave, item);
+		
 		/// pesquisa o item, passado como parâmetro para esse método, na lista encadeada 
 		/// associada à posição, da tabela hash, em que esse novo item deverá ser adicionado.
 		/// Se o item não for localizado, 
 		/// ele é inserido no final da lista encadeada 
 		/// associada à posição, da tabela hash, em que esse novo item será localizado. 
 		try {
-			this.tabelaHash[posicao].pesquisar(chave);
+			this.tabelaHash[posicao].pesquisar(entrada);
 			throw new IllegalArgumentException("O item já havia sido inserido anteriormente na tabela hash!");
 		} catch (NoSuchElementException excecao) {
-			this.tabelaHash[posicao].inserirFinal(chave, item);
+			this.tabelaHash[posicao].inserirFinal(entrada);
 			return posicao;
 		}
 	}
@@ -76,10 +78,13 @@ public class TabelaHash<K, V> {
 		
 		/// cálculo da posição da tabela hash em que o item deve estar armazenado.
 		int posicao = funcaoHash(chave);
-				
+		
+		Entrada<K, V> procurado = new Entrada<>(chave, null);
+		
 		/// pesquisa o item, cuja chave foi passada como parâmetro para esse método,
 		/// na lista encadeada associada à posição, da tabela hash, em que esse item deve estar armazenado.
-		return this.tabelaHash[posicao].pesquisar(chave);
+		procurado = this.tabelaHash[posicao].pesquisar(procurado);
+		return procurado.getValor();
 	}
 	
 	/**
@@ -94,9 +99,12 @@ public class TabelaHash<K, V> {
 		/// cálculo da posição da tabela hash em que o item deve estar armazenado.
 		int posicao = funcaoHash(chave);
 		
+		Entrada<K, V> procurado = new Entrada<>(chave, null);
+		
 		/// remove o item, cuja chave foi passada como parâmetro para esse método,
 		/// da lista encadeada associada à posição, da tabela hash, em que esse item deve estar armazenado.	
-		return this.tabelaHash[posicao].remover(chave);
+		procurado = this.tabelaHash[posicao].remover(procurado);
+		return procurado.getValor();
 	}
 	
 	/**
